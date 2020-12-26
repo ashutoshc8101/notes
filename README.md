@@ -1,32 +1,32 @@
-#### Notes
+#### Notes :
 
 # Angular
 
 ### 1. Lifecycle events:
-- ngOnChanges() -> Respond when Angular sets or resets data bound input properties
-                -> Called before ngOnInit() and when data-bound input properties change
+- `ngOnChanges()` -> Respond when Angular sets or resets data bound input properties
+                -> Called before `ngOnInit()` and when data-bound input properties change
 
-- ngOnInit()    -> Intialize the component after Angular first displays data-bound properties
-                -> Called once, after the first ngOnChanges()
+- `ngOnInit()`    -> Intialize the component after Angular first displays data-bound properties
+                -> Called once, after the first `ngOnChanges()`
  
-- ngDoCheck() -> Detech and act upon changes that Angular won't detect on it's own
-              -> Called immediately after ngOnChanges() on every detection run after                         -> ngOnInit()  on first run
+- `ngDoCheck()` -> Detech and act upon changes that Angular won't detect on it's own
+              -> Called immediately after `ngOnChanges()` on every detection run after                         -> `ngOnInit()`  on first run
               
-- ngAfterContentInit() -> Respond after Angular projects external content into view
-               -> Called after ngAfterContentInit() and every subsequest ngDoCheck()  
+- `ngAfterContentInit()` -> Respond after Angular projects external content into view
+               -> Called after `ngAfterContentInit()` and every subsequest `ngDoCheck()`  
                
-- ngAfterContentChecked() -> Respond after Angular checks content project into the component                   -> Called after ngAfterContentInit() and every subsequent ngDoCheck()
+- `ngAfterContentChecked()` -> Respond after Angular checks content project into the component                   -> Called after `ngAfterContentInit()` and every subsequent `ngDoCheck()`
 
-- ngAfterViewInit() -> Respond after Angular initializes the component's viws and child views,
-                    -> Called once after the first ngAfterContentChecked()
+- `ngAfterViewInit()` -> Respond after Angular initializes the component's viws and child views,
+                    -> Called once after the first `ngAfterContentChecked()`
                  
-- ngOnDestroy() -> Cleanup just before Angular destroys the directive or component.
+- `ngOnDestroy()` -> Cleanup just before Angular destroys the directive or component.
                 -> Called immeditately before Angular destroys the component
  
 ##### Important Points
-* Components should be cheap and safe to construct. You should not, for example, fetch data in a component constructor. An ngOnInit() is a good place for a component to fetch its initial data.
+* Components should be cheap and safe to construct. You should not, for example, fetch data in a component constructor. An `ngOnInit()` is a good place for a component to fetch its initial data.
 * Constructors should do no more than set the initial local variables to simple values.
-* Keep in mind that a directive's data-bound input properties are not set until after construction. If you need to initialize the directive based on those properties, set them when ngOnInit() runs.
+* Keep in mind that a directive's data-bound input properties are not set until after construction. If you need to initialize the directive based on those properties, set them when `ngOnInit()` runs.
 
 * Put cleanup logic in `ngOnDestroy()`, 
   - This is place to free resources that won't be garbage-collected automatically.
@@ -43,7 +43,7 @@
  
 ### 3. Templates
 To emlimite the risk of script injection, Angular doesnot support <script> elements within templates.
-    - Text interpolation using {{ }} can be used in urls and can also invoke functions
+    - Text interpolation using `{{ }}` can be used in urls and can also invoke functions
 
 With interpolation, Angular performs the following tasks:
 
@@ -86,5 +86,16 @@ When using template expressions, follow these best practices:
 - Work within the context
 
   The context of a template statement can be the component class instance or the template.     Because of this, template statements cannot refer to anything in the global namespace such   as window or document. For example, template statements can't call console.log() or     Math.max().
-  
-  
+
+### 5. Pipes
+  Pipes are simple functions you can use in template expressions to accept an input value and return a transformed value.
+        ---- SKIPPED ----
+        
+### 6. Property Binding
+  To bind to an element's property, enclose it in square brackets, [], which indentifies the property as a target property.
+  `<img [src]="intemImageUrl">` 
+The brackets, [], cause Angular to evaluate the right-hand side of the assignment as a dynamic expression.
+
+*Interpolation and property binding can set only properties,not attributes*
+  `colspan` attribute changes to `colSpan` properties.
+  Example properties: `disabled`, `ngClass`, `childItem`and `colSpan`
