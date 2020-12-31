@@ -100,6 +100,7 @@ function fetchDataWithCallback(clb) {
 }
 
 test('async code with callback', (done)=>{
+
     fetchDataWithCallback((data) => {
         try{
             expect(data).toContain(2);
@@ -113,23 +114,20 @@ test('async code with callback', (done)=>{
 // AJAX testing with Promises
 
 function fetchDataWithPromise(fail = 0) {
-    return new Promise((resolve, reject) => {
 
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             if(fail) {
                 reject('Failed')
             }else{
                 resolve([1,2,3])
             }
-
-
         })
-
-
     })
 }
 
 test('async code with promises', ()=>{
+
     expect.assertions(1)
     return fetchDataWithPromise(1).then((data)=>{
         expect(data).toContain(1)
@@ -139,14 +137,15 @@ test('async code with promises', ()=>{
 test('async code with promises with resolves and rejects', () => {
 
     return expect(fetchDataWithPromise()).resolves.toEqual([1,2,3])
-
 })
 
 test('async code with promises rejects', ()=>{
+
     return expect(fetchDataWithPromise(1)).rejects.toMatch('Failed')
 })
 
 test('async code with promises with async/await', async () => {
+
     expect.assertions(1)
     try{
         await fetchDataWithPromise(1)
@@ -157,11 +156,12 @@ test('async code with promises with async/await', async () => {
 
 // Best methods
 test('async code with async await', async () => {
-    await expect(fetchDataWithPromise()).resolves.toEqual([1,2,3])
 
+    await expect(fetchDataWithPromise()).resolves.toEqual([1,2,3])
 })
 
 test('async code rejects with async await', async () => {
+
     await expect(fetchDataWithPromise(1)).rejects.toMatch('Failed')
 })
 
