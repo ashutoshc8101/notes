@@ -85,9 +85,9 @@ test('compling goes as expected', () => {
 
 ```
 
-## AJAX
+## Asynchronous testing.
 
-```
+```javascript
 
 // AJAX testing with callback
 function fetchDataWithCallback(clb) {
