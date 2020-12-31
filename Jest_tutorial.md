@@ -155,6 +155,7 @@ test('async code with promises with async/await', async () => {
     }
 })
 
+// Best methods
 test('async code with async await', async () => {
     await expect(fetchDataWithPromise()).resolves.toEqual([1,2,3])
 
