@@ -1,6 +1,6 @@
 #### Notes :
 
-# Angular
+# Angular 11
 
 ### 1. Lifecycle events:
 - `ngOnChanges()` -> Respond when Angular sets or resets data bound input properties
