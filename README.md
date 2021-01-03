@@ -53,7 +53,7 @@ With interpolation, Angular performs the following tasks:
   4. Assigns the composite to an element or directive property.
 
 You can use all javascript expressions in interpolation syntax except these:
-  * Assignments (=, +=, ...)
+  * Assignments (`=, +=`, ...)
   * Operators such as `new`, `typeof`, or `instanceof`
   * Chaing expressions with `;` or `,`
   * The increment and decrement operators `++` and `--`
