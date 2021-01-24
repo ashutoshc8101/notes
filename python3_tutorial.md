@@ -204,3 +204,43 @@ For Python, PEP 8 has emerged as the style guide that most projects adhere to.
 - Don't use non-ASCII characters in identifiers if there is only the slightest chance people speaking a different language will read or maintain code.
         
 ## Data Structures    
+#### List
+Here are all of the methods of list objects:
+- `list.append(x)`
+- `list.extend(iterable)`
+- `list.insert(i,x)` The first argument is index of element before which to insert.
+- `list.remove(x)` Removes first item whose value is equal to x
+- `list.pop(x)` Removes item at given position and returns it
+- `list.clear()` Removes all elements from the list
+- `list.index(x[, start[, end]])` Return zero-based index in the list of first item equal to x
+- `list.count(x)` Return number of times x appears in the list
+- `list.sort(*, key=None, reverse=False)` Sort the items of the list in place
+- `list.reverse()` Reverse the elements of the list in place
+- `list.copy()` Return a shallow copy of the list. Equivalent to a[:]
+```Python
+# Example
+>>> fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+>>> fruits.count('apple')
+2
+>>> fruits.count('tangerine')
+0
+>>> fruits.index('banana')
+3
+>>> fruits.index('banana', 4)  # Find next banana starting a position 4
+6
+>>> fruits.reverse()
+>>> fruits
+['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange']
+>>> fruits.append('grape')
+>>> fruits
+['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange', 'grape']
+>>> fruits.sort()
+>>> fruits
+['apple', 'apple', 'banana', 'banana', 'grape', 'kiwi', 'orange', 'pear']
+>>> fruits.pop()
+'pear'
+```
+
+- Some methods like `list`, `remove` or `sort` that only modify the list have no return value. This is a design principle for all mutable data strucutres in python
+- Not all data can be sorted or compared. `[None, 'hello', 10]` cannot be sorted or compared.
+- `3 + 4j < 5+7j` is not a valid comparison
