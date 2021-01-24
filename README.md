@@ -4,4 +4,4 @@ Notes taken during learning various technologies
 - Jest
 - Ember
 - Flask
-- Python
+- Python 3
