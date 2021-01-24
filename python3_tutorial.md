@@ -244,3 +244,99 @@ Here are all of the methods of list objects:
 - Some methods like `list`, `remove` or `sort` that only modify the list have no return value. This is a design principle for all mutable data strucutres in python
 - Not all data can be sorted or compared. `[None, 'hello', 10]` cannot be sorted or compared.
 - `3 + 4j < 5+7j` is not a valid comparison
+
+#### Using Lists as Stacks (Last In First Out)
+- To add item, use append()
+- To remove item, use pop()
+```Python
+>>> stack = [3, 4, 5]
+>>> stack.append(6)
+>>> stack.append(7)
+>>> stack
+[3, 4, 5, 6, 7]
+>>> stack.pop()
+7
+>>> stack
+[3, 4, 5, 6]
+>>> stack.pop()
+6
+>>> stack.pop()
+5
+>>> stack
+[3, 4]
+```
+
+#### Using Lists as Queues (First In First Out)
+- It can be done using list, but it is not efficient.
+- While append and pop from the end of list are very fast, doing inserts or props for beggining of list is slow.
+- To implement a queue , use collections.deque which was designed to have fast appends and pops from both ends.
+```Python
+# Example deque
+>>> from collections import deque
+>>> queue = deque(["Eric", "John", "Michael"])
+>>> queue.append("Terry")           # Terry arrives
+>>> queue.append("Graham")          # Graham arrives
+>>> queue.popleft()                 # The first to arrive now leaves
+'Eric'
+>>> queue.popleft()                 # The second to arrive now leaves
+'John'
+>>> queue                           # Remaining queue in order of arrival
+deque(['Michael', 'Terry', 'Graham'])
+```
+
+#### List Comprehensions
+List comprehensions provide concise way to create lists. Commn applications are to make new lists where each element is result of some operations applied to each member of another sequence or iterable.
+
+***Three ways to create new list which square of given list.***
+- Using for loop:
+```Python
+numbers = [1,2,3,4,5]
+squared_numbers = []
+for num in numbers:
+	squared_numbers.append(num**2)
+```
+- Using map function
+```Python
+numbers = [1,2,3,4,5]
+squared_numbers = list(map(lambda x: x**2, numbers))
+```
+- Using list comprehensions
+```Python
+numbers = [1,2,3,4,5]
+squared_numbers = [x**2 for x in numbers]
+```
+- if can be used in list comprehension
+```Python
+only_even = [x for x in range(11) if x%2==0]
+```
+
+- Some more examples
+```Python
+>>> vec = [-4, -2, 0, 2, 4]
+>>> # create a new list with the values doubled
+>>> [x*2 for x in vec]
+[-8, -4, 0, 4, 8]
+>>> # filter the list to exclude negative numbers
+>>> [x for x in vec if x >= 0]
+[0, 2, 4]
+>>> # apply a function to all the elements
+>>> [abs(x) for x in vec]
+[4, 2, 0, 2, 4]
+>>> # call a method on each element
+>>> freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
+>>> [weapon.strip() for weapon in freshfruit]
+['banana', 'loganberry', 'passion fruit']
+>>> # create a list of 2-tuples like (number, square)
+>>> [(x, x**2) for x in range(6)]
+[(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
+>>> # the tuple must be parenthesized, otherwise an error is raised
+>>> [x, x**2 for x in range(6)]
+  File "<stdin>", line 1, in <module>
+    [x, x**2 for x in range(6)]
+               ^
+SyntaxError: invalid syntax
+>>> # flatten a list using a listcomp with two 'for'
+>>> vec = [[1,2,3], [4,5,6], [7,8,9]]
+>>> [num for elem in vec for num in elem]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
