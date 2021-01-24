@@ -340,3 +340,86 @@ SyntaxError: invalid syntax
 >>> [num for elem in vec for num in elem]
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
+
+
+#### Nested Comprehensions
+The initial expresssion in  list comprehension can be any arbitrary expresssion, including another list comprehension.
+
+```Python
+# Transpose matrix example
+>>> matrix = [
+...     [1, 2, 3, 4],
+...     [5, 6, 7, 8],
+...     [9, 10, 11, 12],
+... ]
+>>> [[row[i] for row in matrix] for i in range(4)]
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+```
+
+#### The del statement
+`del` statement is used to remove element from list using its index.
+pop(index) removes one element, del can be used remove slices also
+```Python
+#example
+>>> a = [-1, 1, 66.25, 333, 333, 1234.5]
+>>> del a[0]
+>>> a
+[1, 66.25, 333, 333, 1234.5]
+>>> del a[2:4]
+>>> a
+[1, 66.25, 1234.5]
+>>> del a[:]
+>>> a
+[]
+```
+
+`del` can also be used to delete entire variables
+```Python
+del a
+```
+Referencing the name a hereafter is an error
+
+#### Tuples and Sequences
+Tuples are immutable unlike lists
+Empty tuples are created using empty paranthesis
+```Python
+# Empty tuple
+t = ()
+```
+Tuple containing one element is created using value followed by ,
+```Python
+singleton = 'hello',
+```
+The statement t = 12345, 54321, 'hello!' is an example of tuple packing
+`x, y, z = t` Reverse is also possible
+`a,b = 5, 10` is just a combination of tuple packing and unpacking.
+
+#### Sets
+A set is an unordered collection with no duplicate elements.
+Set objects aalso support mathematical operators like union, intersection, difference and symmetric difference
+
+```Python
+# Set example
+>>> basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+>>> print(basket)                      # show that duplicates have been removed
+{'orange', 'banana', 'pear', 'apple'}
+>>> 'orange' in basket                 # fast membership testing
+True
+>>> 'crabgrass' in basket
+False
+
+>>> # Demonstrate set operations on unique letters from two words
+...
+>>> a = set('abracadabra')
+>>> b = set('alacazam')
+>>> a                                  # unique letters in a
+{'a', 'r', 'b', 'c', 'd'}
+>>> a - b                              # letters in a but not in b
+{'r', 'd', 'b'}
+>>> a | b                              # letters in a or b or both
+{'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}
+>>> a & b                              # letters in both a and b
+{'a', 'c'}
+>>> a ^ b                              # letters in a or b but not both
+{'r', 'd', 'b', 'm', 'z', 'l'}
+```
