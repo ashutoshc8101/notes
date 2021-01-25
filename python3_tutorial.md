@@ -423,3 +423,50 @@ False
 >>> a ^ b                              # letters in a or b but not both
 {'r', 'd', 'b', 'm', 'z', 'l'}
 ```
+
+#### Dictionaries
+- It is best to think of a dictionary as a set of key: value pairs, with the requirement that the keys are unique (within one dictionary). 
+- Dictionaries are indexed using keys, which can be any immutable type, strings and numbers can always be keys.
+- Tuples can be used as keys if they contain only immutable types.
+- You can't use lists as keys, as they mutuable.
+- You can use delete a key:value pair with `del`
+- Performing `list(d)` on a dictionary returns a list of all the keys, in insertion order.
+- To check wheather a single key is in the dictionary use the `in` keyword
+
+```Python
+
+>>> tel = {'jack': 4098, 'sape': 4139}
+>>> tel['guido'] = 4127
+>>> tel
+{'jack': 4098, 'sape': 4139, 'guido': 4127}
+>>> tel['jack']
+4098
+>>> del tel['sape']
+>>> tel['irv'] = 4127
+>>> tel
+{'jack': 4098, 'guido': 4127, 'irv': 4127}
+>>> list(tel)
+['jack', 'guido', 'irv']
+>>> sorted(tel)
+['guido', 'irv', 'jack']
+>>> 'guido' in tel
+True
+>>> 'jack' not in tel
+False
+
+```
+- The `dict()` constructor builds dictionaries directly from sequencies of key-value pairs:
+```Python
+>>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
+{'sape': 4139, 'guido': 4127, 'jack': 4098}
+```
+- dict comprehensions can be used to create dictionaries
+```Python
+>>> {x: x**2 for x in (2, 4, 6)}
+{2: 4, 4: 16, 6: 36}
+```
+- When the keys are simple strings, it is easier to use keyword arguments
+```Python
+>>> dict(sape=4139, guido=4127, jack=4098)
+{'sape': 4139, 'guido': 4127, 'jack': 4098}
+```
