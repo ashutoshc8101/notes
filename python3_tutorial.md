@@ -556,8 +556,71 @@ import importlib;
 importlib.reload(modulename).
 ```
 
+#### Executing modules as scripts
+```sh
+python fibo.py <arguments>
+```
+
+```Python
+if __name__ == "__main__":
+    import sys
+    fib(int(sys.argv[1]))
+```
 
 
+
+#### 'Compiled' Python files
+- To speed up loading modules, Python caches the compiled version of each module in the `__pycache__` directory under the name `module.version.pyc`
+This naming convention allows compiled modules from different realeases and different versions of Python to coexist
+
+Python does not check the cache in two circumstances. First, it always recompiles and does not store the result for the module that’s loaded directly from the command line. Second, it does not check the cache if there is no source module. To support a non-source (compiled only) distribution, the compiled module must be in the source directory, and there must not be a source module.
+
+Some tips for experts:
+- You can use the -O or -OO switches on the Python command to reduce the size of a compiled module. 
+- A program doesn’t run any faster when it is read from a .pyc file than when it is read from a .py file; the only thing that’s faster about .pyc files is the speed with which they are loaded.
+- The module compileall can create .pyc files for all modules in a directory.
+
+#### Standard Modules
+
+1. `dir()`
+
+#### Packages
+- Packages are a way of structuring Python’s module namespace by using “dotted module names”.
+- For example, the module name A.B designates a submodule B in a package named A.
+- Just like the use of modules saves the authors of different modules from having to worry about each other’s global variable names, the use of dotted module names saves the authors of multi-module packages like NumPy or Pillow from having to worry about each other’s module names.
+- The `__init__.py` files are required to make Python treat directories containing the file as packages.
+
+
+#### Errors and Exceptions
+Errors detected during execution are called exceptions
+
+Multiple Exceptions can be handled simultaneously
+```Python
+expect (RuntimeError, TypeError, NameError):
+    pass
+```
+
+- An exception of base class is compatible with derived class.
+```python
+class B(Exception):
+    pass
+
+class C(B):
+    pass
+
+class D(C):
+    pass
+
+for cls in [B, C, D]:
+    try:
+        raise cls()
+    except D:
+        print("D")
+    except C:
+        print("C")
+    except B:
+        print("B")
+```
 
 
 
