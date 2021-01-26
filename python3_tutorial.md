@@ -7,7 +7,7 @@ derived from [docs.python.org](https://docs.python.org/3/tutorial/)
 Python supports complex numbers `a = 2 + 3j`
 
 If you donot want to use special characters, you can use  r before string. It will make raw string.
-String literals can span multiple lines, so you can use `"""....""", '''....'''` (triple quotes)
+String literals can span multiple lines, so you can use `"""...."""`, `'''....'''` (triple quotes)
 
 `3 * string` makes, repeats sring 3 times
 String next to each other are automatically concatenated
@@ -470,3 +470,94 @@ False
 >>> dict(sape=4139, guido=4127, jack=4098)
 {'sape': 4139, 'guido': 4127, 'jack': 4098}
 ```
+
+#### Modules
+A module is a file containing definitions and statements.
+Within module, the module's name is available as the value of the global variable `__name__`. 
+
+```Python
+# fibo.py
+# Fibonacci numbers module
+
+def fib(n):    # write Fibonacci series up to n
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+
+def fib2(n):   # return Fibonacci series up to n
+    result = []
+    a, b = 0, 1
+    while a < n:
+        result.append(a)
+        a, b = b, a+b
+    return result
+
+```
+
+Module can be imported using
+```Python
+import fibo
+```
+Usage:
+```Python
+>>> fibo.fib(1000)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+>>> fibo.fib2(100)
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+>>> fibo.__name__
+'fibo'
+```
+
+#### More on Modules
+
+- A module can contain executable statements as well as functions definitions.
+- These statements are intended to initalize the module. They are executed only the first time the module name is encountered in an import statement.
+- Each module has its own private symbol table, which is used as the global symbol table by all functions defined in the module.
+- It is customary but not required to place all `import` statements at the beginning of a module.
+
+- There is a variant of the import statement that imports names from a module directly into the importing module’s symbol table. For example:
+
+```Python
+>>> from fibo import fib, fib2
+>>> fib(500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
+```
+- This does not introduce the module name from which the imports are taken in the local symbol table (so in the example, `fibo` is not defined)
+
+- There is even a variant to import all names that a module defines:
+```Python
+>>> from fibo import *
+>>> fib(500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
+```
+- This imports all names except those beginning with an underscore (`_`).
+- Note that in general the practice of importing * from a module or package is frowned upon, since it often causes poorly readable code.
+
+- If module name is followed by as, the name following as in bound directly to the import module
+
+```Python
+>>> import fibo as fib
+>>> fib.fib(500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
+```
+as with from
+
+```Python
+>>> from fibo import fib as fibonacci
+>>> fibonacci(500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377
+```
+***Note: For efficiency reasons, each module is only imported once per interpreter session. Therefore, if you change your modules, you must restart the interpreter – or, if it’s just one module you want to test interactively, use importlib.reload(),***
+
+```Python
+import importlib; 
+importlib.reload(modulename).
+```
+
+
+
+
+
+
