@@ -622,5 +622,14 @@ for cls in [B, C, D]:
         print("B")
 ```
 
+#### LEGB Local, Enclosing, Global, Built-in
+Python follows this order to find variable.
+```Python
+x = 'global x'
 
+def test():
+	y = 'local y'
+	print(y)
+	print(x)
+test()
 
