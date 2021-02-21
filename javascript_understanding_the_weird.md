@@ -125,3 +125,20 @@ Execution Stack
 ### Variable Environments
 Where the variables live (scope)
 Every execution context has it's own variable environment.
+
+- Scope chain depends on lexical environment not on execution context.
+
+### Scope
+Where variable is available on your code
+
+### let
+let allows javascript engine to allow block scoping.
+you cannot use c before declaration.
+
+let uses block scoping unlike var
+use cannot use variables defined by let before their decleration unlike var.
+variable with let is also not added to global object unlike var.
+you cannot redeclare variable with let.
+let a = 10
+let a = 20
+gives error unlike var.
