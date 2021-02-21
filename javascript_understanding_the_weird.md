@@ -27,3 +27,6 @@ Address = '100 Main St.'
 Object is a collection of name value pairs.
 Name can have other list of Name value pairs
 
+## Global
+There a global object in every lexical environment, `this` references to that global object.
+Code not inside any function belongs to global.
