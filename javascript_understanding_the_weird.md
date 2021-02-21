@@ -72,6 +72,8 @@ function b(){
 works..!
 This phenonmon is called hoisting.
 
+### Execution Context Phase I
+### Allocation Phase
 ### Hoisting
 Before javascript engine starts executing code line by line, it already allocated memory space
 for variables and functions in your code.
@@ -84,3 +86,42 @@ So it uses a placeholder value `undefined` for the variable during allocation ti
 
 Having variable to be `undefined` means value is not declared for variable.
 Reference error not defined means, variable or identifier itself (not it's value) is not declared/defined.
+
+### Execution Context Phase 2: Running code
+Sets variable values
+and executes code
+
+### Single Threaded
+- One Command at a Time and in Order.
+
+### Function Invocation and The Execution Stack
+```Javascript
+function b() {
+}
+
+function a() {
+  b();
+}
+
+a();
+
+```
+
+- Whenever you invoke a function in js, a new execution context is created and on top of context wher  it is called from.
+
+Execution Stack
+--------------------------
+| b() Exection context   |
+--------------------------
+-------------------------
+| a() Exection context   |
+--------------------------
+--------------------------
+| Global Exection context |
+---------------------------
+
+- When function finishes, it's execution context is popped out of context.
+
+### Variable Environments
+Where the variables live (scope)
+Every execution context has it's own variable environment.
