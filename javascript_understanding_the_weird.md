@@ -30,3 +30,34 @@ Name can have other list of Name value pairs
 ## Global
 There a global object in every lexical environment, `this` references to that global object.
 Code not inside any function belongs to global.
+
+```Javascript
+var a = 5
+
+function b() {
+
+}
+
+console.log(this)
+```
+
+a and b will be members of global object.
+```Javascript
+Window {window: Window, self: Window, document: document, name: "", location: Location, …}
+EmberENV: {_DEBUG_RENDER_TREE: true}
+GetParams: ƒ (t)
+a: 5 <=
+alert: ƒ alert()
+atob: ƒ atob()
+b: ƒ b() <=
+blur: ƒ blur()
+btoa: ƒ btoa()
+caches: CacheStorage {}
+cancelAnimationFrame: ƒ cancelAnimationFrame()
+cancelIdleCallback: ƒ cancelIdleCallback()
+captureEvents: ƒ captureEvents()
+chrome: {loadTimes: ƒ, csi: ƒ}
+clearInterval: ƒ clearInterval()
+clearTimeout: ƒ clearTimeout()
+clientInformation: Nav
+```
