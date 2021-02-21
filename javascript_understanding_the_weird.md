@@ -61,3 +61,13 @@ clearInterval: ƒ clearInterval()
 clearTimeout: ƒ clearTimeout()
 clientInformation: Nav
 ```
+
+Javascript functions can be called before defination
+```Javascript
+b()
+function b(){
+  console.log('Hello')
+}
+```
+works..!
+This phenonmon is called hoisting.
