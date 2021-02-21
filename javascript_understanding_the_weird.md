@@ -71,3 +71,16 @@ function b(){
 ```
 works..!
 This phenonmon is called hoisting.
+
+### Hoisting
+Before javascript engine starts executing code line by line, it already allocated memory space
+for variables and functions in your code.
+When code is started to be executed line by line, it knows about the variables and functions.
+During the allocation process, engine doesnot know what the ultimate value of variables is going to be.
+So it uses a placeholder value `undefined` for the variable during allocation time.
+- All variables in javascript are intially set to be `undefined`.
+
+- `undefined` is a special value that javascript has in it to signify that variable value is not defined yet.
+
+Having variable to be `undefined` means value is not declared for variable.
+Reference error not defined means, variable or identifier itself (not it's value) is not declared/defined.
