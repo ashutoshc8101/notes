@@ -5,4 +5,3 @@ Notes taken during learning various technologies
 - Ember
 - Flask
 - Python 3
-- JAVA 9
